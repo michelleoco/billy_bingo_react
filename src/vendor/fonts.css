@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/roboto-400-regular.woff2) format(woff2),
+    url(./fonts/roboto-400-regular.woff) format(woff);
+}
+
+@font-face {
+  font-family: "Rubik-Mono-One";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/RubikMonoOne-Regular.ttf) format(truetype);
+}
+
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/Anton-Regular.ttf) format(truetype);
+}

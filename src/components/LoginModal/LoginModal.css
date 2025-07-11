@@ -1,0 +1,34 @@
+.modal__label {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.modal__input:focus {
+  outline: none;
+  border-color: #888;
+}
+
+.modal__input::placeholder {
+  color: #aaa;
+}
+
+.modal__input.modal__input_error {
+  border-color: #ff3333;
+}
+
+.modal__error {
+  color: #ff3333;
+  font-size: 12px;
+  margin-top: 4px;
+}
