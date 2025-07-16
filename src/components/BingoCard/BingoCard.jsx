@@ -1,14 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./BingoCard.css";
 import { fetchBillyStringsSongs } from "../../utils/setlistApi";
+import { SavedCardsContext } from "../../contexts/SavedCardsContext";
+import { createBingoCard } from "../../utils/bingoCardApi";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import BingoCardPreviewModal from "../BingoCardPreviewModal/BingoCardPreviewModal";
 
 function BingoCard() {
+  const navigate = useNavigate();
+  const { saveCard } = useContext(SavedCardsContext);
+  const { currentUser } = useContext(CurrentUserContext);
+
   // State for the bingo card
   const [cardDetails, setCardDetails] = useState({
     name: "",
     date: "",
     venue: "",
   });
+
+  // State for preview modal
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+  const [previewCard, setPreviewCard] = useState(null);
 
   // State for the bingo squares
   const [squares, setSquares] = useState(
@@ -93,6 +106,11 @@ function BingoCard() {
     const newSquares = [...squares];
     newSquares[index] = randomSong;
     setSquares(newSquares);
+
+    // If this is the currently selected square in the modal, update the search text
+    if (selectedSquare === index) {
+      setSearchText(randomSong);
+    }
   };
 
   // Handle search text change
@@ -117,19 +135,84 @@ function BingoCard() {
     setSearchText("");
   };
 
-  // Create card
+  // Create card - show preview modal
   const handleCreateCard = () => {
-    // This would normally save the card to a database
-    console.log("Card created:", { cardDetails, squares });
-    alert("Card created successfully!");
+    if (!cardDetails.name.trim()) {
+      alert("Please enter a card name");
+      return;
+    }
+
+    // Create preview card object
+    const cardToPreview = {
+      cardDetails,
+      squares,
+    };
+
+    setPreviewCard(cardToPreview);
+    setShowPreviewModal(true);
+  };
+
+  // Handle saving card to database
+  const handleSaveCard = async (card) => {
+    try {
+      console.log("Starting card save process...");
+      console.log("Current user:", currentUser);
+      console.log("Card data to save:", card);
+
+      // If user is logged in, save to database
+      if (currentUser) {
+        const cardData = {
+          name: card.cardDetails.name,
+          date: card.cardDetails.date || "",
+          venue: card.cardDetails.venue || "",
+          squares: card.squares,
+        };
+
+        console.log("Formatted card data for API:", cardData);
+        console.log("Auth token exists:", !!localStorage.getItem("token"));
+
+        const savedCard = await createBingoCard(cardData);
+        console.log("Card saved to database successfully:", savedCard);
+      } else {
+        console.log("User not logged in, skipping database save");
+      }
+
+      // Also save to local storage context for backward compatibility
+      const cardId = saveCard(card.cardDetails, card.squares);
+      console.log("Card saved to local storage with ID:", cardId);
+
+      // Navigate to profile page
+      navigate("/profile");
+    } catch (error) {
+      console.error("Detailed error saving card:", {
+        message: error.message,
+        stack: error.stack,
+        error: error,
+      });
+      throw error; // Re-throw to be handled by the modal
+    }
+  };
+
+  // Handle closing preview modal
+  const handleClosePreviewModal = () => {
+    setShowPreviewModal(false);
+    setPreviewCard(null);
+  };
+
+  // Handle editing card from preview modal
+  const handleEditCard = () => {
+    // Close the preview modal
+    setShowPreviewModal(false);
+    setPreviewCard(null);
+    // The card data is already in the current state, so user can continue editing
   };
 
   return (
     <div className="bingo-card">
-      <h1 className="bingo-card__title">CREATE</h1>
+      {/* <h1 className="bingo-card__title">CREATE</h1>
       <p className="bingo-card__subtitle">
         Build your custom BINGO card for the upcoming show
-      </p>
+      </p> */}
 
       {isLoadingSongs && (
         <p className="bingo-card__loading">
@@ -213,7 +296,7 @@ function BingoCard() {
 
         {/* Bingo Grid */}
         <div className="bingo-grid">
-          <h2 className="bingo-grid__title">Build Your BINGO Card</h2>
+          <h2 className="bingo-grid__title">Create Your BINGO Card</h2>
 
           <div className="bingo-grid__container">
             {squares.map((square, index) => (
@@ -278,6 +361,16 @@ function BingoCard() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Preview Modal */}
+      {showPreviewModal && previewCard && (
+        <BingoCardPreviewModal
+          card={previewCard}
+          onClose={handleClosePreviewModal}
+          onSave={handleSaveCard}
+          onEdit={handleEditCard}
+        />
       )}
     </div>
   );

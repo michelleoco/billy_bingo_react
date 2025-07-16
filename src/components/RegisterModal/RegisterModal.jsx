@@ -3,14 +3,19 @@ import { useState, useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { ModalContext } from "../../contexts/ModalContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { registerUser } from "../../utils/userApi";
 
 function RegisterModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const { handleLogin } = useContext(CurrentUserContext);
-  const { isRegisterModalOpen, closeRegisterModal, openRegisterSuccessModal } =
-    useContext(ModalContext);
+  const {
+    isRegisterModalOpen,
+    closeRegisterModal,
+    openRegisterSuccessModal,
+    closeRegisterSuccessModal,
+  } = useContext(ModalContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -24,15 +29,31 @@ function RegisterModal() {
     setName(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, you would make an API call to register the user
-    // and then log them in
-    openRegisterSuccessModal();
-    setTimeout(() => {
-      handleLogin({ email, name });
-      resetForm();
-    }, 2000);
+    try {
+      // Register the user with the API
+      await registerUser({ name, email, password });
+
+      // Show success modal
+      openRegisterSuccessModal();
+
+      // After 2 seconds, log the user in and close the modal
+      setTimeout(async () => {
+        try {
+          await handleLogin({ email, password });
+          closeRegisterSuccessModal();
+          resetForm();
+        } catch (error) {
+          console.error("Error logging in after registration:", error);
+          closeRegisterSuccessModal();
+          resetForm();
+        }
+      }, 2000);
+    } catch (error) {
+      console.error("Error registering user:", error);
+      // Handle registration error - you might want to show an error message
+    }
   };
 
   const resetForm = () => {

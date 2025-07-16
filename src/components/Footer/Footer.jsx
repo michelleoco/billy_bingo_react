@@ -8,13 +8,14 @@ function Footer() {
   return (
     <footer className="footer">
       <p className="footer__copyright">
-        © 2025 Michelle O'Connell. Powered by **** API
+        © 2025 Michelle O'Connell. Powered by setlist.fm API
       </p>
       <nav className="footer__nav">
         <Link to="/" className="footer__link">
           Home
         </Link>
-        <a
+
+        {/* <a
           href="https://michelleoco.com"
           target="_blank"
           rel="noopener noreferrer"
@@ -37,7 +38,7 @@ function Footer() {
           className="footer__link"
         >
           <img src={instagramIcon} alt="Instagram" className="footer__icon" />
-        </a>
+        </a> */}
       </nav>
     </footer>
   );

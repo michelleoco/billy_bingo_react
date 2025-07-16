@@ -1,4 +1,253 @@
 .profile {
-  width: 100%;
-  background-color: black;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 200px);
+}
+
+.profile__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.profile__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.profile__subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+.profile__cards {
+  margin-bottom: 2rem;
+}
+
+.profile__cards-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.profile__empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #dee2e6;
+}
+
+.profile__empty-text {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.profile__empty-subtext {
+  font-size: 1rem;
+  color: #888;
+  margin: 0;
+}
+
+.profile__link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.profile__link:hover {
+  text-decoration: underline;
+}
+
+.profile__loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.profile__error {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #dc3545;
+  padding: 2rem;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.profile__cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.card-preview {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-preview__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-preview__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-preview__badge {
+  background-color: #28a745;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.card-preview__name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.card-preview__delete {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  margin-left: 1rem;
+}
+
+.card-preview__delete:hover {
+  background: #c82333;
+}
+
+.card-preview__details {
+  margin-bottom: 1.5rem;
+}
+
+.card-preview__details p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.card-preview__details strong {
+  color: #333;
+}
+
+.card-preview__bingo {
+  margin-top: 1rem;
+}
+
+.card-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  background: #333;
+  border-radius: 8px;
+  padding: 4px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.card-preview__square {
+  background: white;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 2px;
+  overflow: hidden;
+  word-break: break-word;
+  line-height: 1.1;
+}
+
+.card-preview__square:nth-child(13) {
+  background: #28a745;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .profile {
+    padding: 1rem;
+  }
+
+  .profile__title {
+    font-size: 2rem;
+  }
+
+  .profile__cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card-preview {
+    padding: 1rem;
+  }
+
+  .card-preview__grid {
+    max-width: 250px;
+  }
+
+  .card-preview__square {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile__title {
+    font-size: 1.8rem;
+  }
+
+  .profile__cards-title {
+    font-size: 1.5rem;
+  }
+
+  .card-preview__grid {
+    max-width: 200px;
+  }
+
+  .card-preview__square {
+    font-size: 0.4rem;
+  }
 }

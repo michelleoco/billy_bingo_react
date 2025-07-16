@@ -14,8 +14,8 @@ function Main() {
         <section className="hero">
           <h1 className="hero__title">BILLY BINGO</h1>
           {isLoggedIn ? (
-            <Link to="/profile" className="hero__button">
-              View Profile
+            <Link to="/create" className="hero__button">
+              + New Card
             </Link>
           ) : (
             <button className="hero__button" onClick={openRegisterModal}>
@@ -60,7 +60,7 @@ function Main() {
         </section>
       </div>
 
-      <section className="about">
+      {/* <section className="about">
         <div className="about__image-container">
           <img
             src="./src/assets/author.jpg"
@@ -79,7 +79,7 @@ function Main() {
             learned there, and how you can help potential customers.
           </p>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

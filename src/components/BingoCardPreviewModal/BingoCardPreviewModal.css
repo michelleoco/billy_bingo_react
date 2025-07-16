@@ -1,0 +1,281 @@
+.preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.preview-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.preview-modal__content {
+  position: relative;
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.3s ease-out;
+  border: 1px solid #333;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.preview-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 0 24px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 24px;
+}
+
+.preview-modal__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.preview-modal__close {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.preview-modal__close:hover {
+  background-color: #333;
+  color: white;
+}
+
+.preview-modal__body {
+  padding: 0 24px 24px 24px;
+}
+
+.preview-card__details {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.preview-card__name {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 16px 0;
+}
+
+.preview-card__info {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.preview-card__date,
+.preview-card__venue {
+  margin: 0;
+  color: #ccc;
+  font-size: 16px;
+}
+
+.preview-card__date strong,
+.preview-card__venue strong {
+  color: white;
+}
+
+.preview-card__bingo {
+  margin-top: 20px;
+}
+
+.preview-card__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.preview-card__square {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  color: white;
+  line-height: 1.2;
+  overflow: hidden;
+  word-break: break-word;
+  hyphens: auto;
+  min-height: 80px;
+  transition: all 0.2s ease;
+}
+
+.preview-card__square:hover {
+  background-color: #333;
+  border-color: #555;
+}
+
+.preview-card__free {
+  font-weight: 700;
+  color: #ff6b6b;
+  font-size: 16px;
+}
+
+.preview-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 24px;
+  border-top: 1px solid #333;
+  background-color: #1a1a1a;
+  border-radius: 0 0 12px 12px;
+}
+
+.preview-modal__button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  min-width: 120px;
+}
+
+.preview-modal__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.preview-modal__button--secondary {
+  background-color: transparent;
+  color: #ccc;
+  border-color: #555;
+}
+
+.preview-modal__button--secondary:hover:not(:disabled) {
+  background-color: #333;
+  border-color: #666;
+  color: white;
+}
+
+.preview-modal__button--primary {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.preview-modal__button--primary:hover:not(:disabled) {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .preview-modal {
+    padding: 10px;
+  }
+
+  .preview-modal__content {
+    max-height: 95vh;
+  }
+
+  .preview-modal__header {
+    padding: 16px 16px 0 16px;
+    margin-bottom: 16px;
+  }
+
+  .preview-modal__title {
+    font-size: 24px;
+  }
+
+  .preview-modal__body {
+    padding: 0 16px 16px 16px;
+  }
+
+  .preview-modal__footer {
+    padding: 16px;
+    flex-direction: column-reverse;
+  }
+
+  .preview-modal__button {
+    width: 100%;
+  }
+
+  .preview-card__info {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .preview-card__grid {
+    max-width: 400px;
+    gap: 6px;
+  }
+
+  .preview-card__square {
+    font-size: 12px;
+    min-height: 60px;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .preview-card__grid {
+    max-width: 300px;
+    gap: 4px;
+  }
+
+  .preview-card__square {
+    font-size: 11px;
+    min-height: 50px;
+    padding: 2px;
+  }
+
+  .preview-card__name {
+    font-size: 20px;
+  }
+
+  .preview-card__date,
+  .preview-card__venue {
+    font-size: 14px;
+  }
+}

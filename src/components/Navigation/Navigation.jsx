@@ -11,13 +11,21 @@ function Navigation() {
 
   return (
     <nav className="navigation">
-      <div className="navigation__links">
-        {/* This can be used for future navigation links */}
-      </div>
+      <div className="navigation__links"></div>
       <div className="navigation__auth">
         <Link to="/" className="navigation__link-text">
           Home
         </Link>
+        {isLoggedIn && (
+          <>
+            <Link to="/create" className="navigation__link-text">
+              Create
+            </Link>
+            <Link to="/profile" className="navigation__link-text">
+              Profile
+            </Link>
+          </>
+        )}
         {isLoggedIn ? (
           <button className="navigation__button" onClick={handleLogout}>
             Log out

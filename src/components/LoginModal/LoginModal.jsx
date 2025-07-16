@@ -18,11 +18,16 @@ function LoginModal() {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleLogin({ email });
-    closeLoginModal();
-    resetForm();
+    try {
+      await handleLogin({ email, password });
+      closeLoginModal();
+      resetForm();
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert("Login failed. Please check your credentials and try again.");
+    }
   };
 
   const resetForm = () => {
