@@ -137,7 +137,6 @@
   margin-bottom: 12px;
 } */
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .features {
     flex-direction: column;

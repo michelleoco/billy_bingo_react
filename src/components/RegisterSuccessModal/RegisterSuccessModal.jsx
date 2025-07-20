@@ -1,10 +1,26 @@
 import "./RegisterSuccessModal.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "../../contexts/ModalContext";
 
 function RegisterSuccessModal() {
   const { isRegisterSuccessModalOpen, closeRegisterSuccessModal } =
     useContext(ModalContext);
+
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape" && isRegisterSuccessModalOpen) {
+        closeRegisterSuccessModal();
+      }
+    };
+
+    if (isRegisterSuccessModalOpen) {
+      document.addEventListener("keydown", handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [isRegisterSuccessModalOpen, closeRegisterSuccessModal]);
 
   return (
     <div

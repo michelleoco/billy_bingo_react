@@ -209,7 +209,6 @@
   transform: translateY(-1px);
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .preview-modal {
     padding: 10px;

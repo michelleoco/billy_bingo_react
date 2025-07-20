@@ -14,10 +14,10 @@
   flex-direction: column;
   width: 100%;
   background-color: #000;
-  padding-top: 80px; /* Add padding to account for fixed header */
+  padding-top: 80px; /* padding to account for fixed header */
 }
 
-/* Reset some default styles */
+/* Universal selector- resets default styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,7 +29,7 @@ body {
   padding: 0;
 }
 
-/* Global link styles */
+/* Global anchor tag (links) styles */
 a {
   text-decoration: none;
 }

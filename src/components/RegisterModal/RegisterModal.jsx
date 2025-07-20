@@ -9,6 +9,7 @@ function RegisterModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const { handleLogin } = useContext(CurrentUserContext);
   const {
     isRegisterModalOpen,
@@ -19,18 +20,28 @@ function RegisterModal() {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    if (errorMessage) setErrorMessage(""); // Clear error when user starts typing
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    if (errorMessage) setErrorMessage(""); // Clear error when user starts typing
   };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
+    if (errorMessage) setErrorMessage(""); // Clear error when user starts typing
+  };
+
+  const handleCloseModal = () => {
+    resetForm();
+    closeRegisterModal();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Clear any previous error messages
+
     try {
       // Register the user with the API
       await registerUser({ name, email, password });
@@ -52,7 +63,9 @@ function RegisterModal() {
       }, 2000);
     } catch (error) {
       console.error("Error registering user:", error);
-      // Handle registration error - you might want to show an error message
+      setErrorMessage(
+        error.message || "Registration failed. Please try again."
+      );
     }
   };
 
@@ -60,6 +73,7 @@ function RegisterModal() {
     setEmail("");
     setPassword("");
     setName("");
+    setErrorMessage("");
   };
 
   return (
@@ -69,7 +83,7 @@ function RegisterModal() {
         name="register"
         buttonText="Create profile"
         isOpen={isRegisterModalOpen}
-        onClose={closeRegisterModal}
+        onClose={handleCloseModal}
         onSubmit={handleSubmit}
       >
         <label className="modal__label">
@@ -105,6 +119,7 @@ function RegisterModal() {
             required
           />
         </label>
+        {errorMessage && <p className="modal__error">{errorMessage}</p>}
       </ModalWithForm>
     </>
   );

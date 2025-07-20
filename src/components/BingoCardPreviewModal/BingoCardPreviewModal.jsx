@@ -1,8 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./BingoCardPreviewModal.css";
 
 function BingoCardPreviewModal({ card, onClose, onSave, onEdit }) {
   const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [onClose]);
 
   const handleSave = async () => {
     setIsSaving(true);

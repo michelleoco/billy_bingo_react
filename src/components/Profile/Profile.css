@@ -206,7 +206,6 @@
   font-weight: bold;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .profile {
     padding: 1rem;
