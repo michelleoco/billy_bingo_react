@@ -1,8 +1,35 @@
-# React + Vite
+# Billy BINGO: Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Domain
 
-Currently, two official plugins are available:
+www..com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Description
+
+Billy BINGO is a BINGO game application that provides recommendations for BINGO card song selection. The front end provides the user interface that:
+
+- Displays interactive BINGO cards
+- Handles user authentication (signup/signin)
+- Manages user profiles and preferences
+- Provides BINGO card preview and customization
+- Connects to the backend API for data management
+
+## Functionality
+
+- User authentication interface (signup/signin modals)
+- Interactive BINGO card display and management
+- User profile management
+- BINGO card preview functionality
+- Responsive design for various screen sizes
+- Form validation and error handling
+- Modal-based user interactions
+
+## Technologies and Techniques Used
+
+- **React**: Frontend JavaScript library
+- **Vite**: Build tool and development server
+- **JavaScript (ES6+)**: Programming language
+- **CSS3**: Styling and responsive design
+- **HTML5**: Markup structure
+- **ESLint**: Code style enforcement
+- **React Hooks**: State management and lifecycle methods
