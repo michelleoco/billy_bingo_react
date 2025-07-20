@@ -18,9 +18,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1440px;
-  padding: 0 108px;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 20px;
   box-sizing: border-box;
+  min-width: 320px;
+}
+
+@media (min-width: 768px) {
+  .header__container {
+    padding: 0 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__container {
+    padding: 0 108px;
+  }
 }
 
 .header__logo-link {

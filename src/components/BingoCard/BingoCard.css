@@ -309,7 +309,32 @@
   cursor: pointer;
 }
 
-/* Responsive Styles */
+@media (max-width: 480px) {
+  .bingo-card {
+    padding: 20px 10px;
+  }
+
+  .bingo-card__content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card-details {
+    flex: none;
+    width: 100%;
+  }
+
+  .bingo-grid__container {
+    gap: 5px;
+  }
+
+  .bingo-square__content {
+    min-height: 60px;
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
 @media (max-width: 768px) {
   .bingo-card__content {
     flex-direction: column;

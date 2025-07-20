@@ -5,7 +5,8 @@
   font-family: Arial, sans-serif;
   background-color: #000;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: auto;
+  min-width: 320px;
 }
 
 .content {
@@ -29,12 +30,12 @@ body {
   padding: 0;
 }
 
-/* Global anchor tag (links) styles */
+/* Global anchor tag (links) */
 a {
   text-decoration: none;
 }
 
-/* Global button styles */
+/* Global button */
 button {
   cursor: pointer;
   border: none;
