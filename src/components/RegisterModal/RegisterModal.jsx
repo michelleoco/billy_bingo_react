@@ -77,51 +77,49 @@ function RegisterModal() {
   };
 
   return (
-    <>
-      <ModalWithForm
-        title="Create your profile"
-        name="register"
-        buttonText="Create profile"
-        isOpen={isRegisterModalOpen}
-        onClose={handleCloseModal}
-        onSubmit={handleSubmit}
-      >
-        <label className="modal__label">
-          Username
-          <input
-            className="modal__input"
-            type="text"
-            placeholder="Username"
-            value={name}
-            onChange={handleNameChange}
-            required
-          />
-        </label>
-        <label className="modal__label">
-          Email
-          <input
-            className="modal__input"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-        </label>
-        <label className="modal__label">
-          Password
-          <input
-            className="modal__input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-        </label>
-        {errorMessage && <p className="modal__error">{errorMessage}</p>}
-      </ModalWithForm>
-    </>
+    <ModalWithForm
+      title="Create your profile"
+      name="register"
+      buttonText="Create profile"
+      isOpen={isRegisterModalOpen}
+      onClose={handleCloseModal}
+      onSubmit={handleSubmit}
+    >
+      <label className="modal__label">
+        Username
+        <input
+          className="modal__input"
+          type="text"
+          placeholder="Username"
+          value={name}
+          onChange={handleNameChange}
+          required
+        />
+      </label>
+      <label className="modal__label">
+        Email
+        <input
+          className="modal__input"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleEmailChange}
+          required
+        />
+      </label>
+      <label className="modal__label">
+        Password
+        <input
+          className="modal__input"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={handlePasswordChange}
+          required
+        />
+      </label>
+      {errorMessage && <p className="modal__error">{errorMessage}</p>}
+    </ModalWithForm>
   );
 }
 

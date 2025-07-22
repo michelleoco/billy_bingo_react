@@ -1,8 +1,9 @@
 # Billy BINGO: Front End
 
-## Domain
+## Links
 
-www..com
+- 🎮 **[Live Application](will be updated after deployment)**
+- 📁 **[GitHub Pages](https://michelleoco.github.io/billy_bingo_react)**
 
 ## Project Description
 

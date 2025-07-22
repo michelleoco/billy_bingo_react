@@ -4,7 +4,8 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/billy_bingo_react/",
   server: {
-    port: 3000, // Change the port number to 3000
+    port: 3000, // Specify the port for the development server
   },
 });
