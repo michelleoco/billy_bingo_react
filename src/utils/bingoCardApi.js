@@ -1,6 +1,9 @@
 // API utility functions for bingo card operations
 
-const BASE_URL = "http://localhost:3001/api";
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.billybingo.moonangel.com/api"
+    : "http://localhost:3001/api";
 
 // Helper function to get auth headers
 const getAuthHeaders = () => {

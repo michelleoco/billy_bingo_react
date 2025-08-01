@@ -4,7 +4,10 @@
  */
 
 // Backend API base URL
-const BACKEND_API_URL = "http://localhost:3001/api";
+const BACKEND_API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.billybingo.moonangel.com/api"
+    : "http://localhost:3001/api";
 
 /**
  * Fetches setlists for Billy Strings from the backend API
