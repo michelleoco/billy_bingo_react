@@ -4,6 +4,22 @@ _A dynamic React-based interface bringing the Billy Strings Concert BINGO fan ex
 
 ---
 
+# Table of Contents
+
+- [Live Project](#live-project)
+- [Introduction](#introduction)
+- [Project Goals](#project-goals)
+- [What Was Done](#what-was-done)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Screenshots](#screenshots)
+- [Conclusion](#conclusion)
+- [Future Improvements](#future-improvements)
+- [Deployment & Requirements](#deployment--requirements)
+- [Configuration](#configuration)
+
+---
+
 ## Live Project
 
 **Domain:** [app.billybingo.moonangel.com](https://app.billybingo.moonangel.com/)  
